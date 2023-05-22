@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -22,9 +22,18 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "morgan": "^1.10.0",
+<<<<<<< HEAD
     "nodemon": "^2.0.22"
   },
   "devDependencies": {
     "jest": "^29.5.0"
+=======
+    "nodemon": "^2.0.22",
+    "swagger-ui-express": "^4.6.3"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+   
+>>>>>>> 8fc644bc6c26ddb8702c43c48888d72b1160b095
   }
 }
