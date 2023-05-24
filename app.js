@@ -3,6 +3,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const morgan = require('morgan');
 const logger = require('./logger');
+const swaggerUi = require('swagger-ui-express');
 
 // Constants
 const PORT = 8080;
