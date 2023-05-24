@@ -1,4 +1,0 @@
-{"level":"error","message":"Hello, Winston logger, this error!"}
-{"level":"warn","message":"Hello, Winston logger, this warning!"}
-{"level":"info","message":"Hello, Winston logger, this info!"}
-{"level":"info","message":"Running on http://localhost:8080"}
