@@ -1,7 +1,7 @@
 const express = require('express');
-const cors=require('cors')
-const body_parser=require('body-parser')
-const morgan=require('morgan')
+const cors=require('cors');
+const body_parser=require('body-parser');
+const morgan=require('morgan');
 
 
 // Constants
@@ -34,3 +34,4 @@ app.get('/', (req, res) => {
 app.listen(PORT, HOST, () => {
   console.log(`Running on http://localhost:8080`);
 });
+
