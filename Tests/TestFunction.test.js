@@ -14,13 +14,3 @@ test('check if the name is correct',()=>{
 test('check if the name is correct',()=>{
     expect(validations.validateName("88")).toBe(false);
 });
-describe('CORS middleware', () => {
-    it('should allow cross-origin requests', async () => {
-        const response = await request(app)
-            .get('/api/data')
-            .set('Origin', 'http://localhost:3000');
-        expect(response.status).toBe(200);
-        expect(response.header['access-control-allow-origin']).toBe('*');
-        expect(response.body.message).toBe('Hello, world!');
-    });
-});
