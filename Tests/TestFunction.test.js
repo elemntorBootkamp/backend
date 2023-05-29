@@ -9,7 +9,7 @@ test('check if the email contain @',()=>{
 });
 
 test('check if the name is correct',()=>{
-    expect(validations.validateName('kkk')).toBe(true);
+    expect(validations.validateName("kkk")).toBe(true);
 });
 
 test('check if the name is correct',()=>{
