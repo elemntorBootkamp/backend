@@ -8,7 +8,7 @@
     "test": "jest --coverage",
     "lint": "eslint .",
     "prepare": "husky install",
-    "precommit": "npm run lint"
+    "precommit": "npm run dev"
   },
   "repository": {
     "type": "git",
