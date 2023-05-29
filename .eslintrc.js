@@ -1,14 +1,20 @@
 module.exports = {
     'env': {
         'browser': true,
-        'commonjs': true,
-        'es2021': true
+        'es2021': true,
+        'amd': true,
+        'node': true,
+        'jest': true
     },
     'extends': 'eslint:recommended',
     'overrides': [
     ],
+    "plugins": [
+        "node"
+      ],
     'parserOptions': {
-        'ecmaVersion': 'latest'
+        'ecmaVersion': 'latest',
+        'sourceType': 'module'
     },
     'rules': {
         'indent': [
@@ -20,7 +26,7 @@ module.exports = {
             'windows'
         ],
         'quotes': [
-            'error',
+            'warn',
             'single'
         ],
         'semi': [
