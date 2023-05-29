@@ -96,12 +96,9 @@
                         "description": "add user",
                         "required": true,
                         "schema": {
-                            "type": "object",
-                            "properties": {
-                                "user": {
-                                    "type": "object",
-                                    "$ref": "#/definitions/user"
-                                }
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/user"
                             }
                         }
                     }
