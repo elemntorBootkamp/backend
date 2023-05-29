@@ -1,9 +1,14 @@
 const express = require('express');
 const cors = require('cors')
+<<<<<<< Updated upstream
 const bodyParser = require('body-parser')
 const morgan = require('morgan');
 const logger = require('./logger');
 const swaggerUi = require('swagger-ui-express');
+=======
+ const bodyParser = require('body-parser')
+const morgan = require('morgan')
+>>>>>>> Stashed changes
 
 // Constants
 const PORT = 8080;
