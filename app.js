@@ -5,7 +5,7 @@ const morgan=require('morgan');
 
 
 // Constants
-   const PORT = 8080;
+const PORT = 8080;
 const HOST = '0.0.0.0';
 
 // App
@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 app.get('/api/data', (req, res) => {
     res.json({ message: 'Hello, world!' });
 });
-app.get('/', (req, res) => {
+ app.get('/', (req, res) => {
     res.send('Hello World');
 });
 

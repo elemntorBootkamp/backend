@@ -6,8 +6,9 @@
   "scripts": {
     "start": "nodemon app.js",
     "test": "jest --coverage",
-    "precommit": "lint-staged",
-    "prepare": "husky install"
+    "lint": "npm run tslint \"Client/**/*.ts\"",
+    "precommit": "npm run lint && npm test",
+    "prepush": "npm run lint"
   },
   "repository": {
     "type": "git",
@@ -35,9 +36,7 @@
     "prettier": "^2.8.8",
     "swagger-ui-express": "^4.6.3"
   },
-  
   "lint-staged": {
     "**/*.js": "prettier --write --ignore-unknown"
-    }
-   
+  }
 }
