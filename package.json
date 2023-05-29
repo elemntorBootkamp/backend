@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
-    "test": "jest --coverage"
-    },
+    "test": "jest --coverage",
+    "prettier": "prettier --write \"**/*.js\""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elemntorBootkamp/backend.git"
@@ -33,6 +34,11 @@
     "prettier": "^2.8.8",
     "swagger-ui-express": "^4.6.3"
   }
- 
-
+  ,  
+    "husky": {
+      "hooks": {
+        "pre-commit": "npm run prettier && git add ."
+      }
+    }
+  
 }
