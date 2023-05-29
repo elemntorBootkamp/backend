@@ -5,7 +5,7 @@ test('check if the emailvalid',()=>{
     expect(validations.validateEmail('sss@gmail.com')).toBe(true);
 });
  
-test('check if the email contain @',()=>{
+test("check if the email contain @",()=>{
     expect(validations.validateEmail('sssgmail.com')).toBe(false);
 });
 
