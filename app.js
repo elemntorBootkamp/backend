@@ -27,9 +27,9 @@ app.use((req, res, next) => {
 app.get('/api/data', (req, res) => {
     res.json({ message: 'Hello, world!' });
 });
- app.get('/', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Hello World');
-});
+  });
 
 app.listen(PORT, HOST, () => {
     console.log('Running on http://localhost:8080');
