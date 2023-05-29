@@ -29,7 +29,7 @@ module.exports = {
     },
     Delete: async (req, res) => {
         try {
-            const userId = req.params.id;
+            const userId = req.params;
             const index = listUsers.findIndex(user => user.id === userId);
             if (index !== -1) {
                 listUsers.splice(index, 1);
