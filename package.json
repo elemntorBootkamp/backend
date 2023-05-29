@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon app.js",
     "test": "jest --coverage",
-    "lint": "eslint",
+    "lint": "eslint .",
     "prepare": "husky install",
     "precommit": "npm run lint"
   },
