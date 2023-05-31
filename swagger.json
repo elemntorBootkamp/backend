@@ -96,7 +96,7 @@
                         "description": "add user",
                         "required": true,
                         "schema": {
-                            "type": "array",
+                           
                             "items": {
                                 "$ref": "#/definitions/user"
                             }
