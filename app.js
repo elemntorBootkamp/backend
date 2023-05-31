@@ -61,4 +61,3 @@ app.listen(PORT, HOST, () => {
 
   logger.info(`Running in http://localhost:8090/api`);
 });
-
