@@ -20,17 +20,3 @@ module.exports = {
         semi: ['warn', 'always'],
     },
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
