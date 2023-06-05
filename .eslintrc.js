@@ -1,5 +1,4 @@
-module.exports = {
-    'env': {
+module.exports = {     'env': {
         'browser': true,
         'commonjs': true,
         'es2021': true
@@ -28,4 +27,4 @@ module.exports = {
             'always'
         ]
     }
-};
+ 
