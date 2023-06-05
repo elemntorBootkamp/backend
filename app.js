@@ -34,7 +34,7 @@ app.use((req, res, next) => {
         'Access-Control-Allow-Headers',
         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
     );
-    if (req.method === "OPTIONS") {
+    if (req.method === 'OPTIONS') {
         res.header(
             'Access-Control-Allow-Methods',
             'PUT, POST, PATCH, DELETE, GET'
@@ -67,7 +67,7 @@ app.get('/', (req, res) => {
 // });
 app.get('/', async (req, res) => {
     try {
-        const message = 'Hello World';
+        const message = "Hello World";
         res.send(message);
     } catch (error) {
         console.error(error);
