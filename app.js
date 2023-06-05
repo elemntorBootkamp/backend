@@ -67,7 +67,7 @@ app.get('/', (req, res) => {
 // });
 app.get('/', async (req, res) => {
     try {
-        const message = "Hello World";
+        const message = 'Hello World';
         res.send(message);
     } catch (error) {
         console.error(error);
