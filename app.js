@@ -9,7 +9,8 @@ const swaggerUi = require('swagger-ui-express');
 // const morgan = require('morgan')
 swaggerDocument = require('./swagger.json');
 const router = require('./Routes/router');
-
+const session = require('express-session');
+const Keycloak = require('keycloak-connect');
 //logger
 logger.error('Hello, Winston logger, this error!');
 logger.warn('Hello, Winston logger, this warning!');
@@ -92,8 +93,68 @@ app.get('/', async (req, res) => {
 
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+
+
+
+
+const memoryStore = new session.MemoryStore();
+const keycloak = new Keycloak({
+  store: memoryStore
+});
+
+app.use(session({
+  secret: 'my-secret',
+  resave: false,
+  saveUninitialized: true,
+  store: memoryStore
+}));
+
+app.use(keycloak.middleware({
+  logout: '/logout',
+  admin: '/'
+}));
+
+
+
+
+
+
+const keycloakAdminClient = keycloak.admin();
+
+// Define the user object
+const user = {
+  username: 'testuser',
+  email: 'testuser@example.com',
+  enabled: true,
+  credentials: [
+    {
+      type: 'password',
+      value: 'testpassword',
+      temporary: false
+    }
+  ]
+};
+
+// Add the user to Keycloak
+keycloakAdminClient.users.create(user)
+  .then(createdUser => {
+    console.log('User created:', createdUser);
+    console.log('User created:', createdUser);
+    console.log('User ID:', createdUser.id);
+    console.log('User email:', createdUser.email);
+  })
+  .catch(error => {
+    console.error('Error creating' );
+ } ) ;
+
+
+
+
 app.listen(PORT, HOST, () => {
     logger.info(`Running in http://localhost:8090/api`);
     console.log(`Running in http://localhost:8090/api`);
 
 });
+
+
+
