@@ -13,7 +13,7 @@ const HOST = '0.0.0.0';
 const app = express();
 app.use(body_parser.json());
 app.use(cors());
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 app.use((req, res, next) => {
     //origin, headers, methods
     res.header('Access-Control-Allow-Origin', '*');
