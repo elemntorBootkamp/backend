@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const {
-  getById,
-  Add,
-  getAll,
-  Delete,
-  Update,
+    getById,
+    Add,
+    getAll,
+    Delete,
+    Update,
 } = require('../controllers/controler');
 
 //routing
