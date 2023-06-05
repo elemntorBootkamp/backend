@@ -5,8 +5,8 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const logger = require('./logger');
 const swaggerUi = require('swagger-ui-express');
- const bodyParser = require('body-parser')
-const morgan = require('morgan')
+//  const bodyParser = require('body-parser')
+// const morgan = require('morgan')
 swaggerDocument = require('./swagger.json');
 const router = require('./Routes/router');
 
