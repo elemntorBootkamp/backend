@@ -1,8 +1,8 @@
 module.exports = {
-    getById: async (req, res) => {},
-    getAll: async (req, res) => {},
+    getById: async () => {},
+    getAll: async () => {},
 
-    Add: async (req, res) => {},
-    Update: async (req, res) => {},
-    Delete: async (req, res) => {},
+    Add: async () => {},
+    Update: async () => {},
+    Delete: async () => {},
 };
