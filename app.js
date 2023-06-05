@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const logger = require('./logger');
 const swaggerUi = require('swagger-ui-express');
-swaggerDocument = require('./swagger.json');
+const swaggerDocument = require('./swagger.json');
 const router = require('./Routes/router');
 
 //logger
@@ -16,7 +16,7 @@ logger.debug('Hello, Winston logger, this debug!');
 logger.verbose('Hello, Winston logger, this verbose!');
 logger.silly('Hello, Winston logger, this silly!');
 const cors = require('cors');
-const body_parser = require('body-parser');
+//const body_parser = require('body-parser');
 
 // Constants
 const PORT = 8090;
@@ -91,7 +91,6 @@ app.get('/', async (req, res) => {
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, HOST, () => {
-    logger.info(`Running in http://localhost:8090/api`);
-    console.log(`Running in http://localhost:8090/api`);
-
+    logger.info('Running in http://localhost:8090/api');
+    console.log('Running in http://localhost:8090/api');
 });

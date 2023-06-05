@@ -9,15 +9,14 @@ module.exports = {
     },
     extends: ['eslint:recommended', 'prettier'],
     overrides: [],
-
-    plugins: ['node'],
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
     rules: {
         indent: ['error', 4],
+        'linebreak-style': ['warn', 'windows'],
         quotes: ['warn', 'single'],
-        semi: ['error', 'always'],
+        semi: ['warn', 'always'],
     },
 };

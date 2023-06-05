@@ -1,7 +1,7 @@
 const validations = require('./functions');
 //const cors=require('../controllers/controler');
-const app = require('../app');
-const axios = require('axios');
+//const app = require('../app');
+//const axios = require('axios');
 
 test('check if the emailvalid', () => {
     expect(validations.validateEmail('sss@gmail.com')).toBe(true);
