@@ -7,10 +7,11 @@
     "start": "nodemon app.js",
     "test": "jest --coverage",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "prepare": "husky install",
-    "precommit": "npm run prettier",
+ 
     "e2e": "jest",
-    "prettier": "prettier --write \"**/*.js\""
+    "prettier": "prettier --write \"**/*.js\"",
+    "precommit": "pretty-quick --staged",
+    "prepare": "husky install .husky"
   },
   "repository": {
     "type": "git",
