@@ -29,7 +29,7 @@ app.use((req, res, next) => {
     }
     next();
 });
-app.get('/api/data', (req, res) => {
+app.get("/api/data", (req, res) => {
     res.json({ message: 'Hello, world!' });
 });
 app.get('/', (req, res) => {
