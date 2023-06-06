@@ -1,5 +1,5 @@
 const express = require('express');
-
+const Keycloak = require('keycloak-connect');
 // const cors = require('cors')
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
@@ -10,7 +10,6 @@ const swaggerUi = require('swagger-ui-express');
 swaggerDocument = require('./swagger.json');
 const router = require('./Routes/router');
 const session = require('express-session');
-const Keycloak = require('keycloak-connect');
 //logger
 logger.error('Hello, Winston logger, this error!');
 logger.warn('Hello, Winston logger, this warning!');
@@ -119,7 +118,8 @@ app.use(keycloak.middleware({
 
 
 
-const keycloakAdminClient = keycloak.admin();
+// const keycloakAdminClient = keycloak.admin();
+const keycloakAdminClient = require('keycloak-admin').default;
 
 // Define the user object
 const user = {
@@ -136,16 +136,18 @@ const user = {
 };
 
 // Add the user to Keycloak
-keycloakAdminClient.users.create(user)
+(async () => {
+await keycloakAdminClient.users.create(user)
   .then(createdUser => {
-    console.log('User created:', createdUser);
+    logger.info('User created:', createdUser);
     console.log('User created:', createdUser);
     console.log('User ID:', createdUser.id);
     console.log('User email:', createdUser.email);
   })
   .catch(error => {
+    logger.info('User created:', createdUser);
     console.error('Error creating' );
- } ) ;
+ } ) ;})
 
 
 

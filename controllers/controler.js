@@ -1,4 +1,24 @@
 const { logger } = require('../logger');
+const Keycloak = require('keycloak-connect');
+const session = require('express-session');
+const memoryStore = new session.MemoryStore();
+const keycloak = new Keycloak({
+  store: memoryStore
+});
+const keycloakAdminClient = require('keycloak-admin').default;
+const user1="yyy";
+const user = {
+    username: 'testuser',
+    email: 'testuser@example.com',
+    enabled: true,
+    credentials: [
+      {
+        type: 'password',
+        value: 'testpassword',
+        temporary: false
+      }
+    ]
+  };
 
 const listUsers = [
     { id: 1, name: 'hhh', email: 'hhh@fff' },
@@ -21,11 +41,22 @@ module.exports = {
     },
 
     Add: async (req, res) => {
-        let new_user = req.body;
-        listUsers.push(new_user);
-        res.send(new_user);
-        console.log('add successfuly!😎😉');
-    },
+        await keycloakAdminClient.users.create(user)
+  .then(createdUser => {
+    res.send(user1);
+    // logger.info('User created:', createdUser);
+    // console.log('User created:', createdUser);
+    // console.log('User ID:', createdUser.id);
+    // console.log('User email:', createdUser.email);
+  })
+  .catch(error => {
+    logger.info('User created:', createdUser);
+    console.error('Error creating' );
+    res.send(error1);
+ } ) ;},
+
+
+
     Update: async (req, res) => {},
     Delete: async (req, res) => {
         try {
