@@ -29,8 +29,8 @@ app.use((req, res, next) => {
     }
     next();
 });
-app.get("/api/data", (req, res) => {
-    res.json({ message: 'Hello, world!' });
+app.get('/api/data', (req, res) => {
+    res.json({ message: "Hello, world!"});
 });
 app.get('/', (req, res) => {
     res.send('Hello World');
