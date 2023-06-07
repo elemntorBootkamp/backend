@@ -97,9 +97,8 @@ app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 const memoryStore = new session.MemoryStore();
-const keycloak = new Keycloak({
-  store: memoryStore
-});
+// const keycloak = new Keycloak({
+// });
 
 app.use(session({
   secret: 'my-secret',
@@ -107,6 +106,19 @@ app.use(session({
   saveUninitialized: true,
   store: memoryStore
 }));
+const keycloak = new Keycloak({
+  store: memoryStore,
+
+  "realm": "myrealm",
+  "auth-server-url": "http://localhost:8080/auth",
+  "ssl-required": "none",
+  "resource": "2bec48d6-c261-4c9c-af69-197aaf378a89",
+  "credentials": {
+    "secret": "my-secret"
+  }
+});
+
+
 
 app.use(keycloak.middleware({
   logout: '/logout',
@@ -150,7 +162,13 @@ await keycloakAdminClient.users.create(user)
  } ) ;})
 
 
-
+ keycloak.grantManager.obtainDirectly("admin", "111111")
+ .then(grant => {
+   console.log(grant.access_token);
+ })
+ .catch(error => {
+   console.error(error);
+ });
 
 app.listen(PORT, HOST, () => {
     logger.info(`Running in http://localhost:8090/api`);

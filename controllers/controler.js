@@ -5,6 +5,7 @@ const memoryStore = new session.MemoryStore();
 const keycloak = new Keycloak({
   store: memoryStore
 });
+
 const keycloakAdminClient = require('keycloak-admin').default;
 const user1="yyy";
 const user = {
