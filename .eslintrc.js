@@ -3,19 +3,21 @@ module.exports = {
         browser: true,
         commonjs: true,
         es2021: true,
-        node: true,
         amd: true,
+        node: true,
         jest: true,
     },
-    extends: 'eslint:recommended',
+    extends: ['eslint:recommended', 'prettier'],
     overrides: [],
+
+    plugins: ['node'],
     parserOptions: {
         ecmaVersion: 'latest',
+        sourceType: 'module',
     },
     rules: {
         indent: ['error', 4],
-
-        quotes: ['error', 'single'],
-        //semi: ['error', 'always'],
+        quotes: ['warn', 'single'],
+        semi: ['error', 'always'],
     },
 };
