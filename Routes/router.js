@@ -13,6 +13,6 @@ router.post('/Add', Add);
 router.get('/getById/:id', getById);
 router.get('/getAll', getAll);
 router.delete('/delete/:id', Delete);
-router.put('/update/my', Update);
+router.put('/update', Update);
 
 module.exports = router;
