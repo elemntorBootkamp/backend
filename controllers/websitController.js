@@ -1,6 +1,8 @@
+let allwebsite = [];
 module.exports = {
     update: async (req, res) => {
-        let websit = req.body;
-        res.status(200).send(websit.title);
+        let website = req.body;
+        allwebsite.push(website);
+        res.status(200).send(allwebsite);
     },
 };
