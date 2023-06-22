@@ -24,7 +24,7 @@ module.exports = {
         console.log('add successfuly!😎😉');
     },
     Update: async (req, res) => {
-        res.status(200).send("!!!!!!")
+        res.status(200).send('!!!!!!');
     },
     Delete: async (req, res) => {
         try {
