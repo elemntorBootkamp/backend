@@ -23,7 +23,9 @@ module.exports = {
         res.send(new_user);
         console.log('add successfuly!😎😉');
     },
-    Update: async (req, res) => {},
+    Update: async (req, res) => {
+        res.status(200).send('!!!!!!');
+    },
     Delete: async (req, res) => {
         try {
             const userId = req.params;
