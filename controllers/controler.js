@@ -1,5 +1,6 @@
 const { logger } = require('../logger');
 
+
 const listUsers = [
     { id: 1, name: 'hhh', email: 'hhh@fff' },
     { id: 2, name: 'ddd', email: 'hhh@fff' },
@@ -13,7 +14,7 @@ module.exports = {
         if (user == null) res.status(404).send('not found!');
         else res.send(listUsers[_id - 1]);
     },
-    
+
     getAll: async (req, res) => {
         res.send(listUsers);
     },
