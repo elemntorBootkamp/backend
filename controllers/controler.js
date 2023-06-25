@@ -13,6 +13,7 @@ module.exports = {
         if (user == null) res.status(404).send('not found!');
         else res.send(listUsers[_id - 1]);
     },
+    
     getAll: async (req, res) => {
         res.send(listUsers);
     },
