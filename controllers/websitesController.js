@@ -73,5 +73,6 @@ const websitesList = [
 module.exports = {
     getAllWebsites: async (req, res) => {
         res.send(websitesList);
-    },
+    },     
+    
 };
