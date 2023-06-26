@@ -93,5 +93,4 @@ app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.listen(PORT, HOST, () => {
     logger.info('Running in http://localhost:8090/api');
     console.log('Running in http://localhost:8090/api');
-
 });
