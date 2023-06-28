@@ -17,6 +17,7 @@ logger.verbose('Hello, Winston logger, this verbose!');
 logger.silly('Hello, Winston logger, this silly!');
 const cors = require('cors');
 const body_parser = require('body-parser');
+const websiteRout=require('./Routes/websiteRout');
 
 // Constants
 const PORT = 8090;
@@ -43,7 +44,7 @@ app.use((req, res, next) => {
     next();
 });
 app.use('/api/', router);
-app.use('/website', websiteRout);
+app.use('/website',websiteRout);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
