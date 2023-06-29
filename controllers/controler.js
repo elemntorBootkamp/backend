@@ -1,12 +1,10 @@
-const { logger } = require('../logger');
-
 const listUsers = [
     { id: 1, name: 'hhh', email: 'hhh@fff' },
     { id: 2, name: 'ddd', email: 'hhh@fff' },
     { id: 3, name: 'eee', email: 'hhh@fff' },
     { id: 4, name: 'hhh', email: 'hhh@fff' },
 ];
-module.exports = {
+export default {
     getById: async (req, res) => {
         let _id = req.params.id;
         let user = listUsers.find((a) => a.id == _id);

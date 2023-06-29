@@ -1,18 +1,13 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const {
-    getById,
-    Add,
-    getAll,
-    Delete,
-    Update,
-} = require('../controllers/controler');
+import defultcontroller from '../controllers/controler.js';
+
 
 //routing
-router.post('/Add', Add);
-router.get('/getById/:id', getById);
-router.get('/getAll', getAll);
-router.delete('/delete/:id', Delete);
-router.put('/update', Update);
+router.post('/Add', defultcontroller.Add);
+router.get('/getById/:id', defultcontroller.getById);
+router.get('/getAll', defultcontroller.getAll);
+router.delete('/delete/:id', defultcontroller.Delete);
+router.put('/update', defultcontroller.Update);
 
-module.exports = router;
+export default router;

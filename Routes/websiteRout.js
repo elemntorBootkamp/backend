@@ -1,6 +1,8 @@
-const express = require('express');
+import express from 'express';
 const websiterout = express.Router();
-const { update } = require('../controllers/websitController');
+import websitController from '../controllers/websitController.js';
 
-websiterout.put('/update', update);
-module.exports = websiterout;
+websiterout.get('/',websitController.getall);
+websiterout.put('/update', websitController.update);
+websiterout.get('/validcpu',websitController.validCpu);
+export default websiterout;
