@@ -1,4 +1,4 @@
-module.exports = {
+export default{
     env: {
         browser: true,
         commonjs: true,
@@ -6,6 +6,7 @@ module.exports = {
         amd: true,
         node: true,
         jest: true,
+        parser: '@babel/eslint-parser'
     },
     overrides: [],
 

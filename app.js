@@ -3,10 +3,11 @@ import bodyParser from 'body-parser';
 import logger from './logger.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json' assert { type: 'json' };
-import router from './Routes/router.js';
 import morgan from 'morgan';
 import cors from 'cors';
+import router from './Routes/router.js';
 import websiteRout from './Routes/websiteRouter.js';
+import cpuRout from './Routes/cpuRouter.js';
 
 //logger
 logger.error('Hello, Winston logger, this error!');
@@ -27,6 +28,7 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use('/api/', router);
 app.use('/website', websiteRout);
+app.use('/cpu',cpuRout)
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use((req, res, next) => {
     //origin, headers, methods

@@ -1,15 +1,3 @@
-const cpu = [
-    { value: 'Intel Xeon', label: 'Intel Xeon' },
-    { value: 'AMD Ryzen 3', label: 'AMD Ryzen 3' },
-    { value: 'AMD Ryzen 5', label: 'AMD Ryzen 5' },
-    { value: 'AMD Ryzen 7', label: 'AMD Ryzen 7' },
-    { value: 'ARM Cortex-A53', label: 'ARM Cortex-A53' },
-    { value: 'ARM Cortex-A72', label: 'ARM Cortex-A72' },
-    { value: 'ARM Cortex-A73', label: 'ARM Cortex-A73' },
-    { value: 'Intel Core i7', label: 'Intel Core i7' },
-    { value: 'Intel Core i5', label: 'Intel Core i5' },
-    { value: 'Intel Core i3', label: 'Intel Core i3' },
-];
 const allWebsites = [
     {
         id: 1,
@@ -50,13 +38,19 @@ const allWebsites = [
 ];
 export default {
     update: async (req, res) => {
-        let website = req.body;
-        res.status(200).send('ok');
-    },
-    validCpu: async (req, res) => {
-        res.status(200).send(cpu);
+        try {
+            let website = req.body;
+            res.status(200).send('ok');
+        } catch (err) {
+            res.status(404).send(err.message)
+        }
     },
     getall: async (req, res) => {
-        res.status(200).send(allWebsites);
+        try {
+            res.status(200).send(allWebsites);
+
+        } catch (err) {
+            res.status(404).send(err.message);
+        }
     },
 };
