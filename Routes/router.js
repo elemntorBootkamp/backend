@@ -1,9 +1,7 @@
 import express from 'express';
 const router = express.Router();
-import defultcontroller from '../controllers/controler.js';
+import defultcontroller from '../controllers/controller.js';
 
-
-//routing
 router.post('/Add', defultcontroller.Add);
 router.get('/getById/:id', defultcontroller.getById);
 router.get('/getAll', defultcontroller.getAll);
