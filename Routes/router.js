@@ -18,6 +18,6 @@ router.get('/getById/:id', getById);
 router.get('/getAll', getAll);
 router.delete('/delete/:id', Delete);
 router.put('/update', Update);
-router.get('/getAllWebsites', getWebsitesDetailsFromStorageAction);
+router.get('/websites', getWebsitesDetailsFromStorageAction);
 
 module.exports = router;
