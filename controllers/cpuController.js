@@ -15,7 +15,7 @@ export default {
         try {
             res.status(200).send(cpu);
         } catch (err) {
-            res.status(404).send(err.message)
+            res.status(404).send(err.message);
         }
-    }
+    },
 };

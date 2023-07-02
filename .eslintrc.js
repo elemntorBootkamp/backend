@@ -1,4 +1,4 @@
-export default{
+export default {
     env: {
         browser: true,
         commonjs: true,
@@ -6,7 +6,7 @@ export default{
         amd: true,
         node: true,
         jest: true,
-        parser: '@babel/eslint-parser'
+        parser: '@babel/eslint-parser',
     },
     overrides: [],
 
