@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     env: {
         browser: true,
         commonjs: true,
@@ -6,18 +6,17 @@ module.exports = {
         amd: true,
         node: true,
         jest: true,
+        parser: '@babel/eslint-parser',
     },
-    extends: ['eslint:recommended', 'prettier'],
     overrides: [],
 
-    plugins: ['node'],
     parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
     },
     rules: {
         indent: ['error', 4],
-        quotes: ['warn', 'single'],
+        quotes: ['error', 'single'],
         semi: ['error', 'always'],
     },
 };
