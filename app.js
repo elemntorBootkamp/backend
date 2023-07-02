@@ -7,6 +7,9 @@ const logger = require('./logger');
 const swaggerUi = require('swagger-ui-express');
 swaggerDocument = require('./swagger.json');
 const router = require('./Routes/router');
+const request = require('supertest');
+
+
 
 //logger
 logger.error('Hello, Winston logger, this error!');
@@ -88,10 +91,20 @@ app.get('/', async (req, res) => {
 // startServer();
 //npm run prettier
 
+////////////////////////////////////////////////////////////////
+//keyclock
+
+// const keycloak = require('./keycloak-config.js').initKeycloak();
+// app.use(keycloak.middleware());  
+
+// const testController = require('./controllers/test-controller.js');
+// app.use('/test', testController);
+
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, HOST, () => {
     logger.info(`Running in http://localhost:8090/api`);
     console.log(`Running in http://localhost:8090/api`);
+    // console.log(`Running in http://localhost:8090/test`);
 
 });

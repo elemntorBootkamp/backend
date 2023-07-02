@@ -1,5 +1,4 @@
 const { logger } = require('../logger');
-
 const listUsers = [
     { id: 1, name: 'hhh', email: 'hhh@fff' },
     { id: 2, name: 'ddd', email: 'hhh@fff' },
