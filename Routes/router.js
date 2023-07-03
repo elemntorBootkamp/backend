@@ -1,23 +1,12 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const {
-    getById,
-    Add,
-    getAll,
-    Delete,
-    Update,
-} = require('../controllers/controler');
+import defultcontroller from '../controllers/controller.js';
 
-const{
-    getWebsitesDetailsFromStorageAction
-} = require('../controllers/websitesController');
+router.post('/', defultcontroller.Add);
+router.get('/:id', defultcontroller.getById);
+router.get('/', defultcontroller.getAll);
+router.delete('/:id', defultcontroller.Delete);
+router.put('/', defultcontroller.Update);
 
-//routing
-router.post('/Add', Add);
-router.get('/getById/:id', getById);
-router.get('/getAll', getAll);
-router.delete('/delete/:id', Delete);
-router.put('/update', Update);
-router.get('/websites', getWebsitesDetailsFromStorageAction);
 
-module.exports = router;
+export default router;
