@@ -8,4 +8,5 @@ router.get('/', defultcontroller.getAll);
 router.delete('/:id', defultcontroller.Delete);
 router.put('/', defultcontroller.Update);
 
+
 export default router;
