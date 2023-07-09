@@ -3,11 +3,23 @@ import bodyParser from 'body-parser';
 import logger from './logger.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json' assert { type: 'json' };
-import morgan from 'morgan';
+import morgan, { token } from 'morgan';
 import cors from 'cors';
 import router from './Routes/router.js';
 import websiteRout from './Routes/websiteRouter.js';
 import cpuRout from './Routes/cpuRouter.js';
+import jwt from 'jsonwebtoken';
+import Keycloak from 'keycloak-connect';
+const app = express();
+
+const keycloakConfig = {
+    url: 'http://localhost:8080/',
+	realm: 'REACT',
+	clientId: 'node-app',
+    bearerOnly: false,
+};
+const keycloak = new Keycloak({}, keycloakConfig);
+app.use(keycloak.middleware());
 
 //logger
 logger.error('Hello, Winston logger, this error!');
@@ -22,14 +34,14 @@ const PORT = 8090;
 const HOST = '0.0.0.0';
 
 // App
-const app = express();
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
-app.use('/api/', router);
+// app.use('/', router);
 app.use('/website', websiteRout);
 app.use('/cpu', cpuRout);
-app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use((req, res, next) => {
     //origin, headers, methods
     res.header('Access-Control-Allow-Origin', '*');
@@ -46,6 +58,28 @@ app.use((req, res, next) => {
     }
     next();
 });
+app.use((req, res, next) => {
+    console.log(req.headers.authorization);
+    next();
+  });
+//keycloak
+app.get('/protected',keycloak.protect(), (req, res) => {
+    
+    res.send('hhhhhhhhhhh')
+    try{
+    const { sub, email } = req.kauth.grant.access_token.content;
+    res.send(`Protected route accessed by user ${sub} (${email})`);
+    console.log(`Protected route accessed by user ${sub} (${email})`)
+    }
+    catch{
+        console.log("eeeeerror");
+    }
+});
+// Unprotected route
+app.get('/unprotected', (req, res) => {
+    res.send('Unprotected route');
+   
+});
 
 app.get('/', (req, res) => {
     res.send('Hello World');
@@ -61,8 +95,15 @@ app.get('/', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.listen(PORT, HOST, () => {
-    logger.info('Running in http://localhost:8090/api');
-    console.log('Running in http://localhost:8090/api');
-});
+//
+
+
+    // app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+    app.listen(PORT, HOST, () => {
+        logger.info('Running in http://localhost:8090/api');
+        logger.info('hh');
+
+        console.log('Running in http://localhost:8090/protected');
+
+
+    });
