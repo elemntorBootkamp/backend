@@ -11,12 +11,13 @@ export default {
     },
     getall: async (req, res) => {
         const port = process.env.port;
-
-        try {
-            const response = await axios.get(`${port}website/`);
-            res.send(response.data);
-        } catch (err) {
-            return err;
-        }
+        axios
+            .get(`${port}/website/`)
+            .then((response) => {
+                res.status(200).send(response.data);
+            })
+            .catch((err) => {
+                res.status(404).send(err);
+            });
     },
 };
