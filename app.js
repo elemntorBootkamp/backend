@@ -8,6 +8,7 @@ import cors from 'cors';
 import router from './Routes/router.js';
 import websiteRout from './Routes/websiteRouter.js';
 import cpuRout from './Routes/cpuRouter.js';
+import dotenv from 'dotenv';
 
 //logger
 logger.error('Hello, Winston logger, this error!');
@@ -23,6 +24,7 @@ const HOST = '0.0.0.0';
 
 // App
 const app = express();
+dotenv.config();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
