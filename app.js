@@ -41,7 +41,7 @@ app.use((req, res, next) => {
     }
     next();
 });
-app.use('/api/', router);
+app.use('/api', router);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
@@ -86,7 +86,8 @@ app.get('/', async (req, res) => {
 // startServer();
 //npm run prettier
 
-app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use(router);
 
 app.listen(PORT, HOST, () => {
     logger.info('Running in http://localhost:8090/api');
