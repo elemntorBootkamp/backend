@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import logger from './logger.js';
 import swaggerUi from 'swagger-ui-express';
-import swaggerDocument from './swagger.json' assert { type: 'json' };
+// import swaggerDocument from './swagger.json' assert { type: 'json' };
 import morgan from 'morgan';
 import cors from 'cors';
 import router from './Routes/router.js';
@@ -31,7 +31,7 @@ app.use(morgan('dev'));
 app.use('/api/', router);
 app.use('/website', websiteRout);
 app.use('/cpu', cpuRout);
-app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+// app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use((req, res, next) => {
     //origin, headers, methods
     res.header('Access-Control-Allow-Origin', '*');
