@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {funcGetByUserId, funcSearch} from '../services/website.js';
 
 export default {
     update: async (req, res) => {
@@ -9,10 +10,11 @@ export default {
             res.status(404).send(err.message);
         }
     },
-    getall: async (req, res) => {
-        const port = process.env.port;
+    getAll: async (req, res) => {
+        const port = process.env.PORT;
+        const token = process.env.TOKEN;
         axios
-            .get(`${port}/website/`)
+            .get(`${port}`, {headers: {'authorization': `Bearer ${token}`}})
             .then((response) => {
                 res.status(200).send(response.data);
             })
@@ -20,4 +22,22 @@ export default {
                 res.status(404).send(err);
             });
     },
+    getByUserId: async (req, res) => {
+        try {
+            const result = await funcGetByUserId(req.params.userId);
+            res.send(result);
+        }
+        catch (error) {
+            return { error: error.message };
+        }
+    },
+    search: async (req, res) => {
+        try {
+            const result = await funcSearch(req.params.userId,req.query);
+            res.send(result);
+        }
+        catch (error) {
+            return { error: error.message };
+        }
+    }
 };
