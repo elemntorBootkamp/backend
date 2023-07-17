@@ -8,6 +8,7 @@ import cors from 'cors';
 import router from './Routes/router.js';
 import websiteRout from './Routes/websiteRouter.js';
 import cpuRout from './Routes/cpuRouter.js';
+import backRout from './Routes/backupRouter.js'
 import dotenv from 'dotenv';
 
 //logger
@@ -30,6 +31,7 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use('/api/', router);
 app.use('/website', websiteRout);
+app.use('/backup',backRout)
 app.use('/cpu', cpuRout);
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use((req, res, next) => {
