@@ -11,9 +11,9 @@ export default {
     },
     getall: async (req, res) => {
         const port = process.env.port;
-        const Token=process.env.TOKEN;
+        const Token = process.env.TOKEN;
         const config = {
-            headers: {authorization:Token},
+            headers: { authorization: Token },
         };
         axios
             .get(`${port}/website/`, config)
@@ -26,9 +26,9 @@ export default {
     },
     addWebsit: async (req, res) => {
         const port = process.env.port;
-        const Token=process.env.TOKEN;
+        const Token = process.env.TOKEN;
         const config = {
-            headers: { authorization:Token }, 
+            headers: { authorization: Token },
         };
         const obj = req.body;
         axios
