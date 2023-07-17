@@ -11,11 +11,9 @@ export default {
     },
     getall: async (req, res) => {
         const port = process.env.port;
+        const Token=process.env.TOKEN;
         const config = {
-            headers: {
-                authorization:
-                    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
-            },
+            headers: {authorization:Token},
         };
         axios
             .get(`${port}/website/`, config)
@@ -28,11 +26,9 @@ export default {
     },
     addWebsit: async (req, res) => {
         const port = process.env.port;
+        const Token=process.env.TOKEN;
         const config = {
-            headers: {
-                authorization:
-                    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c',
-            },
+            headers: { authorization:Token }, 
         };
         const obj = req.body;
         axios
