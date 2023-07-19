@@ -32,7 +32,7 @@ app.use('/api/', router);
 app.use('/website', websiteRout);
 app.use('/cpu', cpuRout);
 dotenv.config();
-app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use((req, res, next) => {
     //origin, headers, methods
     res.header('Access-Control-Allow-Origin', '*');
