@@ -7,6 +7,7 @@ const logger = require('./logger');
 const swaggerUi = require('swagger-ui-express');
 swaggerDocument = require('./swagger.json');
 const router = require('./Routes/router');
+const routerWebsite=require('./Routes/website')
 
 //logger
 logger.error('Hello, Winston logger, this error!');
@@ -44,6 +45,7 @@ app.use((req, res, next) => {
     next();
 });
 app.use('/api/', router);
+app.use('/website', routerWebsite);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
