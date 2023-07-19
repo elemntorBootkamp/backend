@@ -11,7 +11,8 @@ export default {
     },
     getall: async (req, res) => {
         const port = process.env.STORAGE_ACTION_PORT;
-        axios.get(`${port}/website/`)
+        axios
+            .get(`${port}/website/`)
             .then((response) => {
                 res.status(200).send(response.data);
             })
