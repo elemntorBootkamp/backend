@@ -1,9 +1,9 @@
-FROM node:18
+FROM node:carbon
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-EXPOSE 8080
+EXPOSE 8090
 CMD ["npm", "start"]
 #איך מריצים:
 #docker build -t mynode-app .

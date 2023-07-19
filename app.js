@@ -8,6 +8,7 @@ import cors from 'cors';
 import router from './Routes/router.js';
 import websiteRout from './Routes/websiteRouter.js';
 import cpuRout from './Routes/cpuRouter.js';
+import dotenv from 'dotenv';
 
 //logger
 logger.error('Hello, Winston logger, this error!');
@@ -29,6 +30,7 @@ app.use(morgan('dev'));
 app.use('/api/', router);
 app.use('/website', websiteRout);
 app.use('/cpu', cpuRout);
+dotenv.config();
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use((req, res, next) => {
     //origin, headers, methods
