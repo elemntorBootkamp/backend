@@ -3,12 +3,42 @@ import bodyParser from 'body-parser';
 import logger from './logger.js';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from './swagger.json' assert { type: 'json' };
-import morgan from 'morgan';
+import morgan, { token } from 'morgan';
 import cors from 'cors';
 import router from './Routes/router.js';
 import websiteRout from './Routes/websiteRouter.js';
 import cpuRout from './Routes/cpuRouter.js';
-import dotenv from 'dotenv';
+import protectedRout from './Routes/protectedRoute.js';
+import Keycloak from 'keycloak-connect';
+import session from 'express-session';
+const memoryStore = new session.MemoryStore();
+
+const app = express();
+//keycloak
+const keycloakConfig = {
+    serverUrl: 'http://localhost:8080/',
+    realm: 'keycloak-react-auth',
+    clientId: 'Node-auth',
+};
+app.use(
+    session({
+        secret: 'mySecret',
+        resave: false,
+        saveUninitialized: true,
+        store: memoryStore,
+    })
+);
+// const keycloakMiddleware = new Keycloak({ idpHint: 'SSO', cookies: true });
+const keycloak = new Keycloak({ store: memoryStore }, keycloakConfig);
+app.use(keycloak.middleware());
+//user id
+const addUserIdMiddleware = (req, res, next) => {
+    const userId = req.headers.userid;
+    console.log('idToNode ' + userId);
+    req.userId = userId;
+    next();
+};
+app.use(addUserIdMiddleware);
 
 //logger
 logger.error('Hello, Winston logger, this error!');
@@ -23,14 +53,18 @@ const PORT = 8090;
 const HOST = '0.0.0.0';
 
 // App
-const app = express();
+
 dotenv.config();
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));
-app.use('/api/', router);
+// app.use('/', router);
+app.use(keycloak.protect());
 app.use('/website', websiteRout);
 app.use('/cpu', cpuRout);
+app.use('/protected', protectedRout);
+
 dotenv.config();
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use((req, res, next) => {
@@ -38,7 +72,7 @@ app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header(
         'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+        'Origin, X-Requested-With, Content-Type, Accept, Authorization, userid'
     );
     if (req.method === 'OPTIONS') {
         res.header(
@@ -64,8 +98,12 @@ app.get('/', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+//
 
+// app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.listen(PORT, HOST, () => {
     logger.info('Running in http://localhost:8090/api');
-    console.log('Running in http://localhost:8090/api');
+    logger.info('hh');
+
+    console.log('Running in http://localhost:8090/protected');
 });

@@ -207,6 +207,31 @@
             }
         }
     },
+    "/protected": {
+        "get": {
+            "summary": "get token ",
+            "description": "Get token",
+            "produces": [
+                "application/json"
+            ],
+            "parameters": [],
+            "responses": {
+                "200": {
+                    "description": "OK",
+                    "schema": {
+                        "type": "string"
+                       
+                    }
+                },
+                "400": {
+                    "description": "Invalid status value",
+                    "schema": {
+                          "type":"string"
+                    }
+                }
+            }
+        }
+    },
         "definitions": {
             "user": {
                 "type": "object",

@@ -42,12 +42,14 @@ export default {
             let website = req.body;
             console.log(website.domain);
             res.status(200).send('ok');
+            console.log('🤣😂😂' + req.headers.userid);
         } catch (err) {
             res.status(404).send(err.message);
         }
     },
     getall: async (req, res) => {
         try {
+            console.log('🤣😂😂' + req.headers.userid);
             res.status(200).send(allWebsites);
         } catch (err) {
             res.status(404).send(err.message);
