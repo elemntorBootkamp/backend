@@ -13,7 +13,7 @@
         "http"
     ],
     "host": "localhost:8090",
-    "basePath": "/api",
+    "basePath": "/swagger",
     "paths": {
         "/getAll": {
             "get": {

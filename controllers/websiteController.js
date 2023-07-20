@@ -11,8 +11,9 @@ export default {
     },
     getall: async (req, res) => {
         const port = process.env.port;
+        const token = process.env.token;
         axios
-            .get(`${port}/website/`)
+            .get(`${port}`, { headers: { authorization: `Bearer ${token}`, managerId: '1234' } })
             .then((response) => {
                 res.status(200).send(response.data);
             })
@@ -20,4 +21,28 @@ export default {
                 res.status(404).send(err);
             });
     },
+
+    delete: async (req, res) => {
+        const port = process.env.port;
+        const websiteId = req.params.websiteId;
+        const userId = req.params.userId;
+        const token = process.env.token;
+        console.log(token);
+
+        axios.delete(`${port}${websiteId}`, {
+            headers: {
+                authorization: `Bearer ${token}`,
+                user_id: userId
+            }
+        })
+            .then((response) => {
+                console.log(`Website with ID ${websiteId} has been deleted`);
+                res.status(200).json({ message: `Website with ID ${websiteId} has been deleted` });
+
+            }).catch((err) => {
+                console.error(err);
+                res.status(500).json({ error: err.message });
+
+            });
+    }
 };

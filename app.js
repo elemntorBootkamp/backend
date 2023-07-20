@@ -31,8 +31,8 @@ app.use(morgan('dev'));
 app.use('/api/', router);
 app.use('/website', websiteRout);
 app.use('/cpu', cpuRout);
-app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use((req, res, next) => {
+dotenv.config();
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));app.use((req, res, next) => {
     //origin, headers, methods
     res.header('Access-Control-Allow-Origin', '*');
     res.header(
