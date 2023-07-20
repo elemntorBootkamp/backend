@@ -41,12 +41,14 @@ export default {
         try {
             let website = req.body;
             res.status(200).send('ok');
+            console.log('🤣😂😂'+req.headers.userid);
         } catch (err) {
             res.status(404).send(err.message);
         }
     },
     getall: async (req, res) => {
         try {
+            console.log('🤣😂😂'+req.headers.userid);
             res.status(200).send(allWebsites);
         } catch (err) {
             res.status(404).send(err.message);

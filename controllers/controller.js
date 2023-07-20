@@ -13,6 +13,7 @@ export default {
     },
     getAll: async (req, res) => {
         res.send(listUsers);
+        console.log()
     },
 
     Add: async (req, res) => {
