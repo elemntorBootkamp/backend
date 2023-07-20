@@ -13,7 +13,7 @@ export default {
     },
     getAll: async (req, res) => {
         res.send(listUsers);
-        console.log()
+        console.log();
     },
 
     Add: async (req, res) => {

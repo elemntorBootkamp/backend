@@ -8,37 +8,37 @@ import cors from 'cors';
 import router from './Routes/router.js';
 import websiteRout from './Routes/websiteRouter.js';
 import cpuRout from './Routes/cpuRouter.js';
-import protectedRout from './Routes/protectedRoute.js'
-import Keycloak from 'keycloak-connect'
-import session  from 'express-session';
+import protectedRout from './Routes/protectedRoute.js';
+import Keycloak from 'keycloak-connect';
+import session from 'express-session';
 const memoryStore = new session.MemoryStore();
 
 const app = express();
 //keycloak
 const keycloakConfig = {
-    "serverUrl": 'http://localhost:8080/',
-    "realm": 'keycloak-react-auth',
-    "clientId": 'Node-auth',
-    
+    serverUrl: 'http://localhost:8080/',
+    realm: 'keycloak-react-auth',
+    clientId: 'Node-auth',
 };
-app.use(session({
-    secret: 'mySecret',
-    resave: false,
-    saveUninitialized: true,
-    store: memoryStore
-  }));
+app.use(
+    session({
+        secret: 'mySecret',
+        resave: false,
+        saveUninitialized: true,
+        store: memoryStore,
+    })
+);
 // const keycloakMiddleware = new Keycloak({ idpHint: 'SSO', cookies: true });
-const keycloak = new Keycloak({store: memoryStore}, keycloakConfig);
+const keycloak = new Keycloak({ store: memoryStore }, keycloakConfig);
 app.use(keycloak.middleware());
 //user id
 const addUserIdMiddleware = (req, res, next) => {
-    
-    const userId = req.headers.userid; 
-    console.log('idToNode '+ userId);
+    const userId = req.headers.userid;
+    console.log('idToNode ' + userId);
     req.userId = userId;
     next();
-  };
-app.use(addUserIdMiddleware); 
+};
+app.use(addUserIdMiddleware);
 
 //logger
 logger.error('Hello, Winston logger, this error!');
@@ -61,7 +61,7 @@ app.use(morgan('dev'));
 app.use(keycloak.protect());
 app.use('/website', websiteRout);
 app.use('/cpu', cpuRout);
-app.use('/protected',protectedRout)
+app.use('/protected', protectedRout);
 // app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use((req, res, next) => {
     //origin, headers, methods
@@ -79,8 +79,6 @@ app.use((req, res, next) => {
     }
     next();
 });
-
-
 
 app.get('/', (req, res) => {
     res.send('Hello World');
