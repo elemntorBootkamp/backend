@@ -27,7 +27,6 @@ export default {
         const websiteId = req.params.websiteId;
         const userId = req.params.userId;
         const token = process.env.token;
-        console.log(token);
 
         axios.delete(`${port}${websiteId}`, {
             headers: {
@@ -36,11 +35,9 @@ export default {
             }
         })
             .then((response) => {
-                console.log(`Website with ID ${websiteId} has been deleted`);
                 res.status(200).json({ message: `Website with ID ${websiteId} has been deleted` });
 
             }).catch((err) => {
-                console.error(err);
                 res.status(500).json({ error: err.message });
 
             });
