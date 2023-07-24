@@ -64,7 +64,6 @@ app.use(keycloak.protect());
 app.use('/website', websiteRout);
 app.use('/cpu', cpuRout);
 app.use('/protected', protectedRout);
-
 dotenv.config();
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use((req, res, next) => {
