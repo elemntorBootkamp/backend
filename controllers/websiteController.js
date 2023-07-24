@@ -1,10 +1,10 @@
-import axios from 'axios';
-
 export default {
     update: async (req, res) => {
         try {
             let website = req.body;
+            console.log(website.domain);
             res.status(200).send('ok');
+            console.log('🤣😂😂' + req.headers.userid);
         } catch (err) {
             res.status(404).send(err.message);
         }
